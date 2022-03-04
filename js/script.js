@@ -71,7 +71,7 @@ function getInvitations(addy) {
 }
 
 //encode rawTX
-function encodeRawTx(inviteAddy) {
+function encodeRawTx(Addyinvite) {
   Window.Wblock3(inviteAddy);
 }
 
