@@ -58,23 +58,16 @@ function getInvitations(addy) {
 	axios.get('https://api.idena.org/api/address/'+ addy +'/txs?limit=30').then(response => {
 		var i=0;
 		var allButtons="<hr><p>Invitations:</p>";
-		while(k<30){
-			if(response.data["result"][k].type=="ActivationTx"){
-				
-				var to=response.data["result"][k].to.toLowerCase();
+		while(i<30){
+			if(response.data["result"][i].type=="InviteTx"){
+				var invite=response.data["result"][i].to.toLowerCase();
 				//create buttons
-				allButtons=`${allButtons}<a href="https://scan.idena.io/address/${to}" target="_blank" title="Open Idena explorer">
-				<img src="https://robohash.idena.io/${invite}" width="50" height="50" class="img-circle border rounded-circle" style="background-color:white;">
-				<code>${invite}</code></a> 
-				<a class="btn btn-info btn-sm mt-1 md-1" onclick="deleteInvitation(\'${to}\')" title="Delete invitation">
-				<i class="far fa-trash-alt"></i></a><br><br>`;
+				allButtons=`${allButtons}<a href="https://scan.idena.io/address/${invite}" target="_blank" title="Open Idena explorer"><img src="https://robohash.idena.io/${invite}" width="50" height="50" class="img-circle border rounded-circle" style="background-color:white;"> <code>${invite}</code></a> <a class="btn btn-info btn-sm mt-1 md-1" onclick="deleteInvitation(\'${invite}\')" title="Delete invitation"><i class="far fa-trash-alt"></i></a><br><br>`;
 			}
-			k++;
+			i++;
 		}
 		document.getElementById('buttons').innerHTML=allButtons;
-		
 	});
-	
 }
 
 //encode rawTX
