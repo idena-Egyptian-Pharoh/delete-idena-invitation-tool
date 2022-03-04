@@ -56,7 +56,7 @@ async function getNonceEpoch(){
 }
 
 function getInvitations(addy) {
-	axios.get('https://api.idena.org/api/address/'+ addy +'/txs?limit=30').then(response => {
+	axios.get('https://api.idena.org/api/address/'+ invite +'/txs?limit=30').then(response => {
 		var i=0;
 		var allButtons="<hr><p>Invitations:</p>";
 		while(i<30){
