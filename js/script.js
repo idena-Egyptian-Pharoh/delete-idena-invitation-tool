@@ -67,7 +67,9 @@ function getInvitations(addy) {
 			i++;
 		}
 		document.getElementById('buttons').innerHTML=allButtons;
+		console.log(invite)
 	});
+	
 }
 
 //encode rawTX
