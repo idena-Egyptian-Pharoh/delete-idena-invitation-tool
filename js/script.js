@@ -60,7 +60,7 @@ function getInvitations(addy) {
 		var i=0;
 		var allButtons="<hr><p>Invitations:</p>";
 		while(i<30){
-			if(response.data["result"][i].type=="InviteTx"){
+			if(response.data["result"][i].type=="ActivationTx"){
 				var invite=response.data["result"][i].to.toLowerCase();
 				//create buttons
 				allButtons=`${allButtons}<a href="https://scan.idena.io/address/${invite}" target="_blank" title="Open Idena explorer">
