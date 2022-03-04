@@ -59,7 +59,7 @@ function getInvitations(addy) {
 		var i=0;
 		var allButtons="<hr><p>Invitations:</p>";
 		while(i<30){
-			if(response.data["result"][i].type=="ActivationTx"){
+			if(response.data["result"][i].type=="InviteTx"){
 				var invite=response.data["result"][i].to.toLowerCase();
 				//create buttons
 				allButtons=`${allButtons}<a href="https://scan.idena.io/address/${invite}" target="_blank" title="Open Idena explorer"><img src="https://robohash.idena.io/${invite}" width="50" height="50" class="img-circle border rounded-circle" style="background-color:white;"> <code>${invite}</code></a> <a class="btn btn-info btn-sm mt-1 md-1" onclick="deleteInvitation(\'${invite}\')" title="Delete invitation"><i class="far fa-trash-alt"></i></a><br><br>`;
