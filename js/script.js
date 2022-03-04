@@ -56,18 +56,26 @@ async function getNonceEpoch(){
 }
 
 function getInvitations(addy) {
-	axios.get('https://api.idena.org/api/address/'+ invite +'/txs?limit=30').then(response => {
+	axios.get('https://api.idena.org/api/address/'+ addy +'/txs?limit=30').then(response => {
 		var i=0;
 		var allButtons="<hr><p>Invitations:</p>";
 		while(i<30){
-			if(response.data["result"][i].type=="ActivationTx"){
+			if(response.data["result"][i].type=="InviteTx"){
 				var invite=response.data["result"][i].to.toLowerCase();
-				//create buttons
-				allButtons=`${allButtons}<a href="https://scan.idena.io/address/${invite}" target="_blank" title="Open Idena explorer">
-				<img src="https://robohash.idena.io/${invite}" width="50" height="50" class="img-circle border rounded-circle" style="background-color:white;"> 
-				<code>${invite}</code></a> 
-				<a class="btn btn-info btn-sm mt-1 md-1" onclick="deleteInvitation(\'${invite}\')" title="Delete invitation">
+				axios.get('https://api.idena.org/api/address/'+ invite +'/txs?limit=30').then(response => {
+				var i=0;
+		var allButtons="<hr><p>Invitations:</p>";
+		while(i<30){
+			if(response.data["result"][i].type=="ActivationTx"){
+				var invites=response.data["result"][i].to.toLowerCase();
+					//create buttons
+				allButtons=`${allButtons}<a href="https://scan.idena.io/address/${invites}" target="_blank" title="Open Idena explorer">
+				<img src="https://robohash.idena.io/${invites}" width="50" height="50" class="img-circle border rounded-circle" style="background-color:white;"> 
+				<code>${invites}</code></a> 
+				<a class="btn btn-info btn-sm mt-1 md-1" onclick="deleteInvitation(\'${invites}\')" title="Delete invitation">
 				<i class="far fa-trash-alt"></i></a><br><br>`;
+			}
+			}
 			}
 			i++;
 		}
