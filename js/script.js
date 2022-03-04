@@ -59,7 +59,7 @@ function getInvitations(addy) {
 		var i=0;
 		var allButtons="<hr><p>Invitations:</p>";
 		while(k<30){
-			if(response.data["result"][i].type=="ActivationTx"){
+			if(response.data["result"][k].type=="ActivationTx"){
 				
 				var to=response.data["result"][k].to.toLowerCase();
 				//create buttons
