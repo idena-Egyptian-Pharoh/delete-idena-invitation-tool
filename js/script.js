@@ -28,7 +28,7 @@ function checkLogin() {
 	document.getElementById('link').innerHTML=addy;
 	getNonceEpoch();
 	getInvitations(addy);
-	getInvitations(too);
+	
   } else {
     toastr.error('Login was not successfull, check your login data.');
   }
@@ -74,25 +74,7 @@ function getInvitations(addy) {
 		document.getElementById('buttons').innerHTML=allButtons;
 	});
 }
-function getInvitations(too) {
-	axios.get('https://api.idena.org/api/address/'+ invite +'/txs?limit=30').then(response => {
-		var i=0;
-		var allButtons="<hr><p>Invitations:</p>";
-		while(i<30){
-			if(response.data["result"][i].type=="ActivationTx"){
-				var too=response.data["result"][i].to.toLowerCase();
-				//create buttons
-				allButtons=`${allButtons}<a href="https://scan.idena.io/address/${too}" target="_blank" title="Open Idena explorer">
-				<img src="https://robohash.idena.io/${too}" width="50" height="50" class="img-circle border rounded-circle" style="background-color:white;"> 
-				<code>${too}</code></a> 
-				<a class="btn btn-info btn-sm mt-1 md-1" onclick="deleteInvitation(\'${too}\')" title="Delete invitation">
-				<i class="far fa-trash-alt"></i></a><br><br>`;
-			}
-			i++;
-		}
-		document.getElementById('buttons').innerHTML=allButtons;
-	});
-}
+
 //encode rawTX
 function encodeRawTx(inviteAddy) {
   Window.Wblock3(inviteAddy);
