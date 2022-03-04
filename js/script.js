@@ -66,10 +66,10 @@ function getInvitations(addy) {
 				var to=response.data["result"][k].to.toLowerCase();
 				while(k<30){
 				//create buttons
-				allButtons=`${allButtons}<a href="https://scan.idena.io/address/${invite}" target="_blank" title="Open Idena explorer">
+				allButtons=`${allButtons}<a href="https://scan.idena.io/address/${to}" target="_blank" title="Open Idena explorer">
 				<img src="https://robohash.idena.io/${invite}" width="50" height="50" class="img-circle border rounded-circle" style="background-color:white;">
 				<code>${invite}</code></a> 
-				<a class="btn btn-info btn-sm mt-1 md-1" onclick="deleteInvitation(\'${invite}\')" title="Delete invitation">
+				<a class="btn btn-info btn-sm mt-1 md-1" onclick="deleteInvitation(\'${to}\')" title="Delete invitation">
 				<i class="far fa-trash-alt"></i></a><br><br>`;
 			}
 			i++;
